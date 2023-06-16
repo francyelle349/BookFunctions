@@ -243,6 +243,34 @@ namespace Model
                 }
 
             }
+         private string striconn = @"server=LocalHost; port=3306;database=livros;user=root;password=";
+            MySqlConnection objConnect = null;
+            MySqlCommand objectCommannd = null;
+
+            public DataTable listaDeLivros()
+            {
+                string stSQL = "SELECT * FROM livro";
+                objConnect = new MySqlConnection(striconn);
+                objectCommannd = new MySqlCommand(stSQL, objConnect);
+                try
+                {
+                    MySqlDataAdapter objADP = new MySqlDataAdapter(objectCommannd);
+
+                    DataTable dtLista = new DataTable();
+
+                    objADP.Fill(dtLista);
+
+                    return dtLista;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("deu erro");
+                    return null;
+                }
+
+
+
+            }
     }
 
     }
