@@ -47,5 +47,13 @@ namespace Controller
 
             livro.EditarLivro(titulo, autor, descricao, genero, estoque, precoUnitario, isnb);
         }
+// mostrar os livros
+        public DataTable ListarLivrosDoBanco()
+        {
+            Livro livro = new Livro();
+            DataTable livros = livro.listaDeLivros();
+
+            return livros;
+        }
     }
 }
